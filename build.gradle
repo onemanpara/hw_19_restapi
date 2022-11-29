@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'me.mwi'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    testImplementation (
+            'org.junit.jupiter:junit-jupiter:5.9.0',
+            'io.rest-assured:rest-assured:5.3.0',
+            'org.slf4j:slf4j-simple:2.0.4'
+    )
+
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
